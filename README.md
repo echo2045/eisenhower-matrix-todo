@@ -1,12 +1,141 @@
-# React + Vite
+# Eisenhower Matrix To-Do App (React + Node.js + PostgreSQL)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a full-stack To-Do application built using:
 
-Currently, two official plugins are available:
+- **React + Vite (Frontend)**  
+- **Express + Node.js (Backend API)**  
+- **PostgreSQL (Database)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It uses the Eisenhower Matrix concept to help prioritize tasks based on urgency and importance.
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Add tasks with name and deadline.
+- After adding, you answer if it's important + urgent (custom popup).
+- Tasks are automatically placed in quadrants:  
+  ✅ Do (Important + Urgent)  
+  ✅ Schedule (Important + Not Urgent)  
+  ✅ Delegate (Not Important + Urgent)  
+  ✅ Delete (Not Important + Not Urgent)
+  
+- Mark tasks as done.
+- Completed tasks appear separately.
+- Late tasks are flagged.
+- Quadrants have scrollable areas if too many tasks.
+- Clean and simple design.
+
+## 📦 Installation
+
+### 1️⃣ Clone this project
+
+```bash
+git clone https://github.com/yourusername/eisenhower-matrix-todo.git
+cd eisenhower-matrix-todo
+```
+
+*(or just download the folder)*
+
+### 2️⃣ Install Frontend (React) dependencies
+
+```bash
+npm install
+```
+
+*(make sure you are in the project folder where package.json is)*
+
+### 3️⃣ Install Backend (Node.js + Express) dependencies
+
+Go to your backend folder (where `server.js` is):
+
+```bash
+cd server
+npm install
+```
+
+Install required packages:
+
+```bash
+npm install express pg cors
+npm install -g nodemon  # optional, for auto-reloading server
+```
+
+### 4️⃣ Setup PostgreSQL Database
+
+Make sure you have **PostgreSQL installed and running**.
+
+Create a database (you can use `pgAdmin` or command line):
+
+```sql
+CREATE DATABASE eisenhower_matrix_db;
+```
+
+Create the `tasks` table:
+
+```sql
+CREATE TABLE tasks (
+    id SERIAL PRIMARY KEY,
+    task TEXT NOT NULL,
+    deadline TIMESTAMP NOT NULL,
+    is_important BOOLEAN,
+    is_urgent BOOLEAN,
+    done BOOLEAN DEFAULT false,
+    completed_at TIMESTAMP
+);
+```
+
+Update `server.js` PostgreSQL config with your username, password and port if needed.
+
+## 📌 How to Run the Project
+
+### ▶️ 1. Start Backend (API server)
+
+In the `server` folder:
+
+```bash
+nodemon server.js
+```
+
+or
+
+```bash
+node server.js
+```
+
+Should say:
+
+```
+Server running at http://localhost:3000
+```
+
+### ▶️ 2. Start Frontend (React)
+
+In the main project folder:
+
+```bash
+npm run dev
+```
+
+This will start Vite and React:
+
+```
+http://localhost:5173/
+```
+
+Open that in your browser.
+
+## ✅ Notes
+
+- PostgreSQL must be running before starting backend.
+- Start backend first, then frontend.
+- Update ports or DB settings in `server.js` if necessary.
+
+## 📌 Future Ideas
+
+- Add users and login
+- Allow editing of tasks
+- Add snooze/postpone option
+- Add tags or categories
+
+## 📢 License
+
+MIT — free to use, modify and share.
