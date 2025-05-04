@@ -29,7 +29,7 @@ It uses the Eisenhower Matrix concept to help prioritize tasks based on urgency 
 ### 1️⃣ Clone this project
 
 ```bash
-git clone https://github.com/yourusername/eisenhower-matrix-todo.git
+git clone https://github.com/echo2045/eisenhower-matrix-todo.git
 cd eisenhower-matrix-todo
 ```
 
